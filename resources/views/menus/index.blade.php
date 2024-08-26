@@ -67,24 +67,33 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-block btn-sm btn-outline-info"
-                                                    data-toggle="dropdown"><i class="fas fa-cog"></i>
-                                                </button>
-                                                <div class="dropdown-menu" role="menu">
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('manage-menu.edit', $item->id) }}">Edit</a>
-                                                    <form method="POST"
-                                                        action="{{ route('manage-menu.destroy', $item->id) }}">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <a class="dropdown-item confirm-button" href="#">Hapus</a>
-                                                    </form>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" data-toggle="modal"
-                                                        data-target="#modal-default{{ $item->id }}"
-                                                        href="#">Tambah Permission</a>
-
+                                                <div class="dropdown">
+                                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                                        id="menu" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <i class="bi bi-gear-fill"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <li><a class="dropdown-item"
+                                                                href="{{ route('manage-menu.edit', $item->id) }}">Edit</a>
+                                                        </li>
+                                                        <li>
+                                                            <form method="POST"
+                                                                action="{{ route('manage-menu.destroy', $item->id) }}">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="dropdown-item">Hapus</button>
+                                                            </form>
+                                                        </li>
+                                                        <li>
+                                                            <div class="dropdown-divider"></div>
+                                                        </li>
+                                                        <li><a class="dropdown-item" data-bs-toggle="modal"
+                                                                data-bs-target="#modal-default{{ $item->id }}"
+                                                                href="#">Tambah Permission</a></li>
+                                                    </ul>
+                                                </div>
                                             </td>
+
                                         </tr>
                                         <div class="modal fade" id="modal-default{{ $item->id }}">
                                             <div class="modal-dialog">

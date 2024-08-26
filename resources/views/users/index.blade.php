@@ -52,7 +52,7 @@
                                                         </button>
                                                         <ul class="dropdown-menu" aria-labelledby="menu">
                                                             <a class="dropdown-item"
-                                                                href="{{ route('manage-user.edit', $item->id) }}">Edit</a>
+                                                                href="{{ route('manage-user.edit', $item->id) }}">dEdit</a>
                                                             <form action="{{ route('manage-user.destroy', $item->id) }}"
                                                                 method="post">
                                                                 @csrf

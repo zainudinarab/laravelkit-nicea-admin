@@ -77,6 +77,7 @@ class UserController extends Controller
     {
         $roles = Role::all();
         $user = User::findorfail($id);
+        // dd($user->roles->pluck('id')->toArray());
         return view('users.edit', compact('user', 'roles'));
     }
 
@@ -109,10 +110,11 @@ class UserController extends Controller
                 [
                     'name' => $request->name,
                     'email' => $request->email,
-                    'password' => Hash::make('password'),
+                    'password' => !empty($request->password) ? Hash::make($request->password) : $user->password,
                     'email_verified_at' => !blank($request->verified) ? now() : null
                 ]
             );
+
             $user->syncRoles(!blank($request->role) ? $request->role : array());
             toastr()->success('Pengguna berhasil diperbarui');
             return redirect()->route('manage-user.index');

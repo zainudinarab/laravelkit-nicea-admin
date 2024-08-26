@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class MasterSeeder extends Seeder
 {
@@ -107,6 +108,7 @@ class MasterSeeder extends Seeder
         User::factory()->create([
             'name' => 'Super Admin',
             'email' => 'superadmin@gmail.com',
+            'password' => Hash::make('superadmin'),
         ]);
 
         $superadmin = Role::create(['name' => 'superadmin']);

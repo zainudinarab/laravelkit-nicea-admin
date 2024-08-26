@@ -44,22 +44,32 @@
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->name }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-block btn-sm btn-outline-info"
-                                                    data-toggle="dropdown"><i class="fas fa-cog"></i>
-                                                </button>
-                                                <div class="dropdown-menu" role="menu">
-                                                    <a class="dropdown-item" href="#">Lihat</a>
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('manage-role.edit', $item->id) }}">Edit</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <form method="POST"
-                                                        action="{{ route('manage-role.destroy', $item->id) }}">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <a class="dropdown-item confirm-button" href="#">Hapus</a>
-                                                    </form>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-block btn-sm btn-outline-info dropdown-toggle"
+                                                        type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                                        aria-expanded="false">
+                                                        <i class="fas fa-cog"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <li><a class="dropdown-item" href="#">Lihat</a></li>
+                                                        <li><a class="dropdown-item"
+                                                                href="{{ route('manage-role.edit', $item->id) }}">Edit</a>
+                                                        </li>
+                                                        <li>
+                                                            <hr class="dropdown-divider">
+                                                        </li>
+                                                        <li>
+                                                            <form method="POST"
+                                                                action="{{ route('manage-role.destroy', $item->id) }}">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="dropdown-item">Hapus</button>
+                                                            </form>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </td>
+
                                         </tr>
                                     @endforeach
                                 </tbody>
